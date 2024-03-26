@@ -55,12 +55,12 @@
         <dependency>
             <groupId>com.speedment.jpastreamer</groupId>
             <artifactId>jpastreamer-core</artifactId>
-            <version>3.0.3</version>
+            <version>3.0.4</version>
         </dependency>
         <dependency>
             <groupId>com.speedment.jpastreamer.integration.spring</groupId>
             <artifactId>spring-boot-jpastreamer-autoconfigure</artifactId>
-            <version>3.0.3</version>
+            <version>3.0.4</version>
         </dependency>
     </dependencies>
 
