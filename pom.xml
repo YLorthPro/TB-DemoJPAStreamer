@@ -55,50 +55,39 @@
         <dependency>
             <groupId>com.speedment.jpastreamer</groupId>
             <artifactId>jpastreamer-core</artifactId>
-            <version>3.0.4</version>
+            <version>3.0.3</version>
         </dependency>
         <dependency>
             <groupId>com.speedment.jpastreamer.integration.spring</groupId>
             <artifactId>spring-boot-jpastreamer-autoconfigure</artifactId>
-            <version>3.0.4</version>
+            <version>3.0.3</version>
         </dependency>
     </dependencies>
 
     <build>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-compiler-plugin</artifactId>
-                    <configuration>
-                        <proc>only</proc>
-                        <source>17</source>
-                        <target>17</target>
-                        <annotationProcessorPaths>
-                            <path>
-                                <groupId>org.projectlombok</groupId>
-                                <artifactId>lombok</artifactId>
-                                <version>1.18.20</version>
-                            </path>
-                            <path>
-                                <groupId>com.speedment.jpastreamer</groupId>
-                                <artifactId>jpastreamer-core</artifactId>
-                                <version>3.0.2-SNAPSHOT</version>
-                            </path>
-                        </annotationProcessorPaths>
-                    </configuration>
-                </plugin>
-                <plugin>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>add-source</goal>
+                        </goals>
+                        <configuration>
+                            <sources>
+                                <source>
+                                    ${project.build.directory}/generated-sources/annotations
+                                </source>
+                            </sources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
 
-                    <groupId>org.springframework.boot</groupId>
-                    <artifactId>spring-boot-maven-plugin</artifactId>
-                    <configuration>
-                        <skip>false</skip>
-                        <mainClass>be.technobel.demojpastreamer.DemoJpaStreamerApplication</mainClass>
-                    </configuration>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
     <repositories>
         <repository>

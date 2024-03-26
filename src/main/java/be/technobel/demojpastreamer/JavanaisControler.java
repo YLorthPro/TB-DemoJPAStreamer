@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Comparator;
 import java.util.List;
 
 @RestController
@@ -24,7 +23,7 @@ public class JavanaisControler {
     public List<Javanais> get(){
         return jpaStreamer.stream(Javanais.class)
                 .filter(javanais -> javanais.getName().length()%2 == 0)
-                .sorted(Comparator.comparing(Javanais::getName).reversed())
+                .sorted(Javanais$.name.reversed())
                 .toList();
     }
 }
