@@ -2,6 +2,7 @@ package be.technobel.demojpastreamer;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.Collection;
 
@@ -15,7 +16,8 @@ public class Javanais {
     private String name;
     private String commentaire;
 
-    @ManyToMany(mappedBy = "javanaises",fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "javanaises")
+    @ToString.Exclude
     private Collection<Badges> badges;
 
 }

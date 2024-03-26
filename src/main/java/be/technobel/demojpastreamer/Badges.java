@@ -2,6 +2,7 @@ package be.technobel.demojpastreamer;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.ToString;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +16,7 @@ public class Badges {
     private String nom;
 
     @ManyToMany
+    @ToString.Exclude
     @JoinTable(name = "Badges_javanais",
             joinColumns = @JoinColumn(name = "badges_nom"),
             inverseJoinColumns = @JoinColumn(name = "javanaises_id"))

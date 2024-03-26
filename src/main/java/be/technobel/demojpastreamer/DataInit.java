@@ -24,22 +24,26 @@ public class DataInit implements InitializingBean {
 
         Badges b1 = new Badges();
         b1.setNom("Git");
-        badgesRepository.save(b1);
+        b1.setJavanaises(new ArrayList<>());
 
         Badges b2 = new Badges();
         b2.setNom("Angular");
-        badgesRepository.save(b2);
+        b2.setJavanaises(new ArrayList<>());
         
-        for (int i = 0; i < 50; i++) {
+        for (int i = 0; i < 10; i++) {
             Javanais javanais = new Javanais();
             javanais.setName(faker.lordOfTheRings().character());
             javanais.setCommentaire(faker.hobbit().quote());
             javanais.setBadges(new ArrayList<>());
-            if(i %4 == 0 )
-                javanais.getBadges().add(b1);
-            if(i %6 == 0 )
-                javanais.getBadges().add(b2);
+            if(i %4 == 0 ) {
+                b1.getJavanaises().add(javanais);
+            }
+            if(i %6 == 0 ) {
+                b2.getJavanaises().add(javanais);
+            }
             javanaisRepository.save(javanais);
         }
+        badgesRepository.save(b1);
+        badgesRepository.save(b2);
     }
 }
