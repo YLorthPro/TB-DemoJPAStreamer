@@ -3,6 +3,8 @@ package be.technobel.demojpastreamer;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.Collection;
+
 @Entity
 @Data
 @Table(name = "javanais")
@@ -12,5 +14,8 @@ public class Javanais {
     private Long id;
     private String name;
     private String commentaire;
+
+    @ManyToMany(mappedBy = "javanaises",fetch = FetchType.EAGER)
+    private Collection<Badges> badges;
 
 }
